@@ -19,8 +19,6 @@ void init_input_GPIO(t_nano_pin pin, t_input_mode mode) {
         // #error "A6 & A7 are not valid Ports (D, B or C)."
     }
     
-    return;
-    
 }
 
 void init_output_GPIO(t_nano_pin pin) {
@@ -39,7 +37,6 @@ void init_output_GPIO(t_nano_pin pin) {
         */
     }
 
-    return;
 }
 
 t_pin_state read_input_GPIO(t_nano_pin pin) {
@@ -69,8 +66,6 @@ t_pin_state read_input_GPIO(t_nano_pin pin) {
         *   So they shouldn't be init as outputs.
         */
     }
-
-    return -1;
 
 }
 
