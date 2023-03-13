@@ -1,18 +1,17 @@
-#include <avr/io.h>
+#include <nanolib.h>
+
 #include <util/delay.h>
 
 int main()
 {
-  DDRD = 0b10000000;
-  DDRD &= ~(1 << DDD3); 
-  PORTD |= (1 << PORTD3); 
-
+  init_input_GPIO(D3, PULLUP);
+  init_output_GPIO(D7);
+  
   while(1) {
-    if (PIND & (1 << PIND3))
-    {
-      PORTD &= ~(1 << PORTD7); 
+    if (read_input_GPIO(D3) == LOW) {
+      write_output_GPIO(D7, HIGH); 
     } else {
-      PORTD |= (1 << PORTD7); 
+      write_output_GPIO(D7, LOW);
     }
   }
 }
