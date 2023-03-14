@@ -19,7 +19,7 @@ int main(void) {
   init_input_GPIO(D3, PULLUP);
   init_output_GPIO(D7);
 
-  while(1) {
+  while (1) {
     if (read_input_GPIO(D3) == HIGH) {
       write_output_GPIO(D7, HIGH);
     } else {

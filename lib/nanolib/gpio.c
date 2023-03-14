@@ -5,10 +5,25 @@
 void init_input_GPIO(t_nano_pin pin, t_input_mode mode) {
     if(0 >= pin && pin <= 7) {
         DDRD |= (1 << pin);
+        if(mode == PULLUP) {
+            PORTD |= (1 << pin);
+        } else {
+            PORTD &= ~(1 << pin);
+        }
     } else if (8 >= pin && pin <= 13) {
         DDRB |= (1 << pin);
+        if(mode == PULLUP) {
+            PORTB |= (1 << pin);
+        } else {
+            PORTB &= ~(1 << pin);
+        }
     } else if (14 >= pin && pin <= 19) {
         DDRC |= (1 << pin);
+        if(mode == PULLUP) {
+            PORTC |= (1 << pin);
+        } else {
+            PORTC &= ~(1 << pin);
+        }
     } else if (20 >= pin && pin <= 21) {
         /** 
         *   Add stuff here if you want to say something.
@@ -25,9 +40,9 @@ void init_output_GPIO(t_nano_pin pin) {
     if(0 >= pin && pin <= 7) {
         DDRD |= (1 << pin);
     } else if (8 >= pin && pin <= 13) {
-        DDRB |= (1 << pin);
+        DDRB |= (1 << pin - 8);
     } else if (14 >= pin && pin <= 19) {
-        DDRC |= (1 << pin);
+        DDRC |= (1 << pin - 14);
     } else if (20 >= pin && pin <= 21) {
         /** 
         *   Add stuff here if you want to say something.
